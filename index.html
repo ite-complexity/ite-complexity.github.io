@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I. Talha Ersoy — Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --bg2: #edeae2;
+      --ink: #1a1916;
+      --ink2: #5a5750;
+      --ink3: #9a9690;
+      --accent: #2b3d8a;
+      --accent-light: #e8ecf8;
+      --serif: 'EB Garamond', Georgia, serif;
+      --mono: 'DM Mono', monospace;
+      --rule: rgba(26,25,22,0.12);
+      --max: 720px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 5rem 0 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .name-block h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .name-block h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .role {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--ink2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .header-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .header-links a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--ink2);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+
+    .header-links a:hover { color: var(--accent); }
+
+    .header-links a::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadein 0.5s ease forwards;
+    }
+
+    section:nth-child(2) { animation-delay: 0.05s; }
+    section:nth-child(3) { animation-delay: 0.12s; }
+    section:nth-child(4) { animation-delay: 0.19s; }
+    section:nth-child(5) { animation-delay: 0.26s; }
+
+    @keyframes fadein {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── About ── */
+    .about-text {
+      font-size: 1.15rem;
+      color: var(--ink2);
+      max-width: 600px;
+    }
+
+    .about-text strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* ── Interests ── */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .interest-item {
+      background: var(--bg);
+      padding: 1.25rem 1.5rem;
+      transition: background 0.15s;
+    }
+
+    .interest-item:hover { background: var(--bg2); }
+
+    .interest-item h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .interest-item p {
+      font-size: 0.85rem;
+      color: var(--ink2);
+      line-height: 1.55;
+    }
+
+    /* ── Publications ── */
+    .pub-list { display: flex; flex-direction: column; gap: 0; }
+
+    .pub {
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-start: start;
+    }
+
+    .pub:last-child { border-bottom: none; }
+
+    .pub-year {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--ink3);
+      padding-top: 4px;
+      white-space: nowrap;
+    }
+
+    .pub-content {}
+
+    .pub-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 0.3rem;
+      color: var(--ink);
+    }
+
+    .pub-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .pub-title a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .pub-authors {
+      font-size: 0.85rem;
+      color: var(--ink2);
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: var(--ink3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pub-tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 1px 8px;
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+    }
+
+    .pub-cite {
+      background: var(--bg2);
+      padding: 1px 8px;
+      color: var(--ink3);
+      font-size: 0.65rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2.5rem 0;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: var(--ink3);
+      letter-spacing: 0.04em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      body { font-size: 16px; }
+      header { padding: 3rem 0 2.5rem; }
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      .header-links { align-items: flex-start; }
+      .pub { grid-template-columns: 1fr; }
+      .pub-year { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <div class="header-inner">
+        <div class="name-block">
+          <h1>I. Talha <em>Ersoy</em></h1>
+          <p class="role">Doctoral Researcher &nbsp;·&nbsp; Physics &amp; Machine Learning</p>
+        </div>
+        <nav class="header-links" aria-label="External profiles">
+          <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://arxiv.org/search/?searchtype=author&query=Ersoy+I+T" target="_blank" rel="noopener">arXiv</a>
+        </nav>
+      </div>
+    </header>
+
+    <section aria-labelledby="about-label">
+      <p class="section-label" id="about-label">About</p>
+      <p class="about-text">
+        I am a doctoral researcher working at the intersection of <strong>theoretical physics</strong> and <strong>machine learning theory</strong>. On the physics side, I study higher-spin holography and the homotopy-algebraic structures that underpin string field theory. On the ML side, I investigate phase transitions, regularisation landscapes, and the hierarchical geometry of deep neural networks. I am currently finishing my doctoral thesis.
+      </p>
+    </section>
+
+    <section aria-labelledby="interests-label">
+      <p class="section-label" id="interests-label">Research Interests</p>
+      <div class="interests-grid">
+        <div class="interest-item">
+          <h3>Holography &amp; homotopy</h3>
+          <p>Higher-spin gravity, string field theory, A∞ and L∞ algebraic structures</p>
+        </div>
+        <div class="interest-item">
+          <h3>Phase transitions in ML</h3>
+          <p>L² regularisation landscapes, accuracy phase transitions, error geometry</p>
+        </div>
+        <div class="interest-item">
+          <h3>Deep network structure</h3>
+          <p>Hierarchical organisation, learning dynamics, emergent behaviour during training</p>
+        </div>
+        <div class="interest-item">
+          <h3>Stochastic processes</h3>
+          <p>Markovian &amp; non-Markovian dynamics, master equations, open quantum systems</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="pubs-label">
+      <p class="section-label" id="pubs-label">Publications</p>
+      <div class="pub-list">
+
+        <div class="pub">
+          <div class="pub-content">
+            <p class="pub-title">
+              <a href="https://link.springer.com/article/10.1007/JHEP09(2024)169" target="_blank" rel="noopener">Holography as homotopy</a>
+            </p>
+            <p class="pub-authors">C. Chiaffrino, T. Ersoy, O. Hohm</p>
+            <p class="pub-venue">
+              Journal of High Energy Physics 2024 (9), 1–50
+              <span class="pub-tag">String theory</span>
+              <span class="pub-cite">14 citations</span>
+            </p>
+          </div>
+          <div class="pub-year">2024</div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-content">
+            <p class="pub-title">
+              <a href="https://arxiv.org/abs/2505.06597" target="_blank" rel="noopener">Phase transitions between accuracy regimes in L² regularised deep neural networks</a>
+            </p>
+            <p class="pub-authors">I. T. Ersoy, K. Wiesner</p>
+            <p class="pub-venue">
+              arXiv:2505.06597
+              <span class="pub-tag">ML theory</span>
+            </p>
+          </div>
+          <div class="pub-year">2025</div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-content">
+            <p class="pub-title">
+              <a href="https://arxiv.org/abs/2512.11866" target="_blank" rel="noopener">Phase transitions reveal hierarchical structure in deep neural networks</a>
+            </p>
+            <p class="pub-authors">I. T. Ersoy, A. F. Cardozo Licha, K. Wiesner</p>
+            <p class="pub-venue">
+              arXiv:2512.11866
+              <span class="pub-tag">ML theory</span>
+            </p>
+          </div>
+          <div class="pub-year">2025</div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-content">
+            <p class="pub-title">
+              <a href="#" target="_blank" rel="noopener">Exploring L² phase transitions on error landscapes</a>
+            </p>
+            <p class="pub-authors">I. T. Ersoy, K. Wiesner</p>
+            <p class="pub-venue">
+              ICML Workshop — High-dimensional Learning Dynamics 2025
+              <span class="pub-tag">Learning dynamics</span>
+              <span class="pub-cite">2 citations</span>
+            </p>
+          </div>
+          <div class="pub-year">2025</div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-content">
+            <p class="pub-title">Markovian, non-Markovian processes and master equations</p>
+            <p class="pub-authors">I. T. Ersoy</p>
+            <p class="pub-venue">
+              <span class="pub-tag">Stochastic processes</span>
+            </p>
+          </div>
+          <div class="pub-year">2020</div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <span>I. Talha Ersoy</span>
+      <span>Updated 2025</span>
+    </footer>
+
+  </div>
+</body>
+</html>
