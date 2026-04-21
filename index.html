@@ -11,8 +11,8 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f7f5f0;
-      --bg2: #edeae2;
+      --bg: #faf9f6;
+      --bg2: #f2f0ea;
       --ink: #1a1916;
       --ink2: #5a5750;
       --ink3: #9a9690;
@@ -20,7 +20,7 @@
       --accent-light: #e8ecf8;
       --serif: 'EB Garamond', Georgia, serif;
       --mono: 'DM Mono', monospace;
-      --rule: rgba(26,25,22,0.12);
+      --rule: rgba(26,25,22,0.10);
       --max: 720px;
     }
 
@@ -53,6 +53,36 @@
       align-items: flex-end;
       gap: 2rem;
       flex-wrap: wrap;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+
+    .profile-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+
+    .profile-placeholder {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--bg2);
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--ink3);
+      flex-shrink: 0;
     }
 
     .name-block h1 {
@@ -131,6 +161,7 @@
     section:nth-child(4) { animation-delay: 0.15s; }
     section:nth-child(5) { animation-delay: 0.20s; }
     section:nth-child(6) { animation-delay: 0.25s; }
+    section:nth-child(7) { animation-delay: 0.30s; }
 
     @keyframes fadein {
       to { opacity: 1; transform: translateY(0); }
@@ -150,7 +181,7 @@
     .about-text {
       font-size: 1.05rem;
       color: var(--ink2);
-      max-width: 620px;
+      max-width: 640px;
     }
 
     .about-text + .about-text { margin-top: 1rem; }
@@ -158,6 +189,11 @@
     .about-text strong {
       color: var(--ink);
       font-weight: 500;
+    }
+
+    .about-text em {
+      font-style: italic;
+      color: var(--ink2);
     }
 
     /* ── Interests ── */
@@ -187,6 +223,47 @@
       font-size: 0.85rem;
       color: var(--ink2);
       line-height: 1.55;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-group h3 {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .skill-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .skill-group ul li {
+      font-size: 0.88rem;
+      color: var(--ink2);
+      line-height: 1.5;
+      padding-left: 0.8rem;
+      position: relative;
+    }
+
+    .skill-group ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--ink3);
     }
 
     /* ── Publications ── */
@@ -338,6 +415,7 @@
       body { font-size: 16px; }
       header { padding: 3rem 0 2.5rem; }
       .header-inner { flex-direction: column; align-items: flex-start; }
+      .header-left { flex-direction: column; align-items: flex-start; }
       .header-links { align-items: flex-start; }
       .pub, .talk { grid-template-columns: 1fr; }
       .pub-year, .talk-date { padding-top: 0; }
@@ -349,10 +427,15 @@
 
     <header>
       <div class="header-inner">
-        <div class="name-block">
-          <h1>I. Talha <em>Ersoy</em></h1>
-          <p class="role">Doctoral Researcher &nbsp;·&nbsp; Physics &amp; Machine Learning</p>
-          <p class="affiliation">University of Potsdam &nbsp;·&nbsp; Supervisor: Prof. Dr. Karoline Wiesner</p>
+        <div class="header-left">
+          <!-- Replace photo.jpg with your actual filename once uploaded -->
+          <!-- <img src="photo.jpg" alt="I. Talha Ersoy" class="profile-photo" /> -->
+          <div class="profile-placeholder">photo</div>
+          <div class="name-block">
+            <h1>I. Talha <em>Ersoy</em></h1>
+            <p class="role">Doctoral Researcher &nbsp;·&nbsp; Physics &amp; Machine Learning</p>
+            <p class="affiliation">University of Potsdam &nbsp;·&nbsp; Supervisor: Prof. Dr. Karoline Wiesner</p>
+          </div>
         </div>
         <nav class="header-links" aria-label="External profiles">
           <a href="mailto:talha.ersoy@uni-potsdam.de">talha.ersoy@uni-potsdam.de</a>
@@ -367,10 +450,13 @@
     <section aria-labelledby="about-label">
       <p class="section-label" id="about-label">About</p>
       <p class="about-text">
-        I develop mathematical frameworks at the intersection of <strong>theoretical physics</strong>, <strong>information geometry</strong>, and <strong>deep learning theory</strong>. My work uses deep neural networks as controlled systems to study universal principles of model formation, with particular focus on quantifying data complexity, model hierarchies, and the emergence of theoretical understanding. Drawing on methods from statistical physics, information theory and geometry, and gauge theory, I aim to understand the limits of learning systems and the foundations of modeling and information processing beyond classical statistics.
+        I develop mathematical frameworks at the intersection of <strong>theoretical physics</strong>, <strong>information geometry</strong>, and <strong>deep learning theory</strong>. My work uses deep neural networks as controlled systems to study universal principles of model formation — with particular focus on quantifying data complexity, model hierarchies, and the emergence of theoretical understanding. Drawing on methods from statistical physics, information theory, Morse theory, and gauge theory, I aim to understand the limits of learning systems and the foundations of modeling beyond classical statistics.
       </p>
       <p class="about-text">
-        My background spans homological methods in high-energy physics to information-geometric analysis of learning systems — allowing me to identify connections between seemingly disparate domains and find new approaches to understanding theory formation. I am currently finishing my doctoral thesis at the University of Potsdam.
+        My doctoral thesis, <em>Quantifying Theory Formation through Information-Geometric Approaches to Deep Learning</em>, develops novel connections between statistical physics and deep learning phenomenology — characterizing phase transitions in regularized neural networks, quantifying data complexity using topological methods, and bridging physics concepts with AI theory.
+      </p>
+      <p class="about-text">
+        My path to this research was non-linear: I began in information geometry and cosmology, specialized in advanced quantum field theory and <em>L∞</em>-algebras at Heidelberg and Berlin, and published on homological approaches to AdS/CFT — before independently transitioning to learning theory. This cross-disciplinary background, spanning high-energy physics to complexity science, allows me to identify unconventional connections and bring novel perspectives to fundamental problems in learning and theory formation.
       </p>
     </section>
 
@@ -379,19 +465,50 @@
       <div class="interests-grid">
         <div class="interest-item">
           <h3>Phase transitions in ML</h3>
-          <p>L² regularisation landscapes, accuracy phase transitions, error geometry and Ricci curvature of loss surfaces</p>
+          <p>L² regularisation landscapes, accuracy phase transitions, Ricci curvature of loss surfaces, error geometry</p>
         </div>
         <div class="interest-item">
           <h3>Information geometry</h3>
-          <p>Statistical manifolds, information-geometric analysis of learning dynamics, complexity bounds</p>
+          <p>Statistical manifolds, information-geometric analysis of learning dynamics, complexity bounds, model hierarchies</p>
         </div>
         <div class="interest-item">
           <h3>Deep network structure</h3>
-          <p>Hierarchical organisation, spontaneous symmetry breaking, model hierarchy quantification</p>
+          <p>Spontaneous symmetry breaking, feature hierarchies, emergent behaviour, reservoir computing and spin glasses</p>
         </div>
-        <div class="interest-item">
-          <h3>Holography &amp; homotopy</h3>
-          <p>Previous work: higher-spin gravity, string field theory, A∞ and L∞ algebraic structures in AdS/CFT</p>
+
+      </div>
+    </section>
+
+    <section aria-labelledby="skills-label">
+      <p class="section-label" id="skills-label">Technical Expertise</p>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Theoretical Physics</h3>
+          <ul>
+            <li>Statistical field theory &amp; renormalization group</li>
+            <li>Information geometry &amp; statistical manifolds</li>
+            <li>Phase transition analysis &amp; critical phenomena</li>
+            <li>Homological methods (AdS/CFT, homotopy theory)</li>
+            <li>Morse theory &amp; topological data analysis</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Deep Learning &amp; Computation</h3>
+          <ul>
+            <li>DNN analysis &amp; regularization theory</li>
+            <li>Python scientific stack (PyTorch, NumPy, SciPy)</li>
+            <li>Numerical analysis of high-dimensional systems</li>
+            <li>Information-theoretic measures (entropy, KL-divergence)</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Interdisciplinary</h3>
+          <ul>
+            <li>Theory formation across scientific domains</li>
+            <li>Complexity science approaches</li>
+            <li>Epistemology of scientific modeling</li>
+            <li>History &amp; philosophy of science</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -435,7 +552,7 @@
             </p>
             <p class="pub-authors">I. T. Ersoy, K. Wiesner</p>
             <p class="pub-venue">
-              ICML Workshop — High-dimensional Learning Dynamics 2025
+              ICML Workshop — High-dimensional Learning Dynamics, Vancouver
               <span class="pub-tag">Learning dynamics</span>
               <span class="pub-cite">2 citations</span>
             </p>
